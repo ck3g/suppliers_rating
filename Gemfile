@@ -2,37 +2,56 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
+gem "devise"
+gem "haml-rails"
+gem 'jquery-rails'
+gem "has_scope"
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
+                              git: 'git://github.com/anjlab/bootstrap-rails.git'
+gem 'meta-tags', require: "meta_tags"
+gem 'simple_form'
 
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier',     '>= 1.0.3'
+  gem "therubyracer"
 end
 
-gem 'jquery-rails'
+group :development do
+  gem "capistrano",         require: false
+  gem 'capistrano-recipes', require: false
+  gem 'capistrano_colors',  require: false
+  gem "erb2haml"
+  gem "rails_best_practices"
+  gem "thin"
+  gem "pry-rails"
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development, :test do
+  gem 'rspec-rails',        '~> 2.11.0'
+  gem 'factory_girl_rails', '~> 3.5.0'
+  gem 'guard-rspec',        '~> 1.2.0'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :test do
+  gem "faker", "~> 1.0.1"
+  gem "launchy"
+  gem 'spork',              '>= 0.9.0.rc9'
+  gem 'guard-spork',        '~> 1.1.0'
+  gem 'guard-bundler',      '~> 1.0.0'
+  gem "capybara",           "~> 1.1.2"
+  gem "database_cleaner"
+  gem "shoulda"
+  gem "email_spec"
 
-# Use unicorn as the app server
-# gem 'unicorn'
+  gem 'rb-fsevent', '>= 0.4.3', require: false
+  gem 'growl',      '~> 1.0.3', require: false
+  gem 'rb-inotify', '>= 0.8.6', require: false
+  gem 'libnotify',  '~> 0.5.7', require: false
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+group :production do
+  gem "exception_notification"
+end
