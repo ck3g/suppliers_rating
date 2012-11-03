@@ -1,0 +1,7 @@
+
+ru:
+  activerecord:
+    attributes:
+      supplier:
+        name: Имя или название
+        rating: Рейтинг

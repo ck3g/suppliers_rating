@@ -1,6 +1,9 @@
 
 ru:
   project_name: Suppliers Rating
+  wait: ...
+  successfully_created: Успешно добавлено
+  successfully_updated: Успешно обновлено
   sign_in: Вход
   do_sign_in: Войти
   sign_out: Выход
@@ -9,4 +12,10 @@ ru:
   password: пароль
   profile: Профиль
   update: Сохранить
+  suppliers: Поставщики
+  new_supplier: Новый поставщик
+  no_suppliers_yet: Список поставщиков пуст.
+  you_can: Вы можете
+  create_supplier: Создать поставщика
+  are_you_sure_delete_supplier: При удалении поставщика будут удалены все его услуги и история связанная с ним. Вы действительно ходите удалить поставщика?
 

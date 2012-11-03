@@ -3,6 +3,9 @@ ru:
     submit:
       user:
         update: Сохранить изменения
+      supplier:
+        create: Создать
+        update: Обновить
   simple_form:
     "yes": 'Да'
     "no": 'Нет'

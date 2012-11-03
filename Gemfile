@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 gem "devise"
+gem "cancan"
 gem "haml-rails"
 gem 'jquery-rails'
 gem "has_scope"
@@ -11,6 +12,8 @@ gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
                               git: 'git://github.com/anjlab/bootstrap-rails.git'
 gem 'meta-tags', require: "meta_tags"
 gem 'simple_form'
+gem "faker", "~> 1.0.1"
+gem "russian"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -36,7 +39,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "faker", "~> 1.0.1"
   gem "launchy"
   gem 'spork',              '>= 0.9.0.rc9'
   gem 'guard-spork',        '~> 1.1.0'

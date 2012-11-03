@@ -1,0 +1,5 @@
+
+ru:
+  unauthorized:
+    manage:
+      all: "У вас нет прав для данного действия"

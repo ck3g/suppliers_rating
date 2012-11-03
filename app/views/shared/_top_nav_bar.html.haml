@@ -8,7 +8,9 @@
       = link_to t(:project_name), root_path, class: "brand"
       .nav-collapse.collapse
         %ul.nav
-          %li.active
+          %li{class: ("active" if current_page?(suppliers_path))}
+            = link_to t(:suppliers), suppliers_path
+          %li
             %a{:href => "#"} Home
           %li
             %a{:href => "#about"} About
@@ -19,8 +21,6 @@
               Dropdown
               %b.caret
             %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Action
               %li
                 %a{:href => "#"} Another action
               %li

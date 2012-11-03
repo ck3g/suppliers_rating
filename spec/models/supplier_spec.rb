@@ -9,17 +9,17 @@ describe Supplier do
     context "when valid" do
       subject { create :supplier }
       it { should validate_presence_of :name }
-      it { should validate_presence_of :rank }
-      it { should validate_numericality_of(:rank).only_integer }
-      it { should allow_value(5).for :rank }
+      it { should validate_presence_of :rating }
+      it { should validate_numericality_of(:rating) }
+      it { should allow_value(4.5).for :rating }
     end
 
     context "when invalid" do
       subject { create :supplier }
       it { should_not allow_value(nil).for :name }
-      it { should_not allow_value(nil).for :rank }
-      it { should_not allow_value(-1).for :rank }
-      it { should_not allow_value(6).for :rank }
+      it { should_not allow_value(nil).for :rating }
+      it { should_not allow_value(-1).for :rating }
+      it { should_not allow_value(6).for :rating }
     end
   end
 end

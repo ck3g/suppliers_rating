@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(:version => 20121103104241) do
 
   create_table "suppliers", :force => true do |t|
     t.string   "name"
-    t.integer  "rank",       :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.decimal  "rating",     :default => 0.0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "suppliers", ["name"], :name => "index_suppliers_on_name"

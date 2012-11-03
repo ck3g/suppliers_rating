@@ -29,6 +29,7 @@ Spork.prefork do
 
     config.include FactoryGirl::Syntax::Methods
     config.include Devise::TestHelpers, type: :controller
+    config.extend LoginMacros, type: :controller
   end
 end
 
