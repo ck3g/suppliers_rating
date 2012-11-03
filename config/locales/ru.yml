@@ -1,3 +1,10 @@
 
 ru:
   project_name: Suppliers Rating
+  sign_in: Вход
+  do_sign_in: Войти
+  sign_out: Выход
+  do_sign_out: Выйти
+  email: e-mail
+  password: пароль
+  profile: Профиль

@@ -32,16 +32,19 @@
               %li
                 %a{:href => "#"} One more separated link
         - if user_signed_in?
-          %ul.nav.pull-right
-            %li
-              = link_to "#" do
-                = "signed_as"
-                = current_user.email
-            %li= link_to "Sign out", destroy_user_session_path, method: :delete
+          .btn-group.pull-right
+            = link_to "#", class: "btn dropdown-toggle", data: { toggle: "dropdown" } do
+              %i.icon-user
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to t(:profile), edit_user_registration_path
+              %ul.divider
+              %li= link_to t(:do_sign_out), destroy_user_session_path, method: :delete
         - else
           = simple_form_for(User.new, url: user_session_path, method: :post, html: { class: "navbar-form pull-right"}) do |form|
-            = form.email_field :email, class: "span2", placeholder: "Email"
-            = form.password_field :password, class: "span2", placeholder: "password"
-            = form.submit "Sign in", class: "btn"
+            = form.email_field :email, class: "span2", placeholder: t(:email)
+            = form.password_field :password, class: "span2", placeholder: t(:password)
+            = form.submit t(:do_sign_in), class: "btn"
 
 
