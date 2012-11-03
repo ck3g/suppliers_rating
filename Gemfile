@@ -14,6 +14,7 @@ gem 'meta-tags', require: "meta_tags"
 gem 'simple_form'
 gem "faker", "~> 1.0.1"
 gem "russian"
+gem "kaminari", "~> 0.14.1"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

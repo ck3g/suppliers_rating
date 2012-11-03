@@ -27,3 +27,5 @@
   = t(:you_can)
   = link_to t(:create_supplier), new_supplier_path, class: "btn"
 
+.row
+  = paginate @suppliers
