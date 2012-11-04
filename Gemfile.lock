@@ -281,6 +281,7 @@ GEM
     treetop (1.4.11)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (0.5.1)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
       http_parser.rb (~> 0.5.1)
@@ -337,4 +338,5 @@ DEPENDENCIES
   spork (>= 0.9.0.rc9)
   therubyracer
   thin
+  turbolinks
   uglifier (>= 1.0.3)
