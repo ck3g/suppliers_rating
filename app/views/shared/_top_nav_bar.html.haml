@@ -10,27 +10,8 @@
         %ul.nav
           %li{class: ("active" if current_page?(suppliers_path))}
             = link_to t(:suppliers), suppliers_path
-          %li
-            %a{:href => "#"} Home
-          %li
-            %a{:href => "#about"} About
-          %li
-            %a{:href => "#contact"} Contact
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Dropdown
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Another action
-              %li
-                %a{:href => "#"} Something else here
-              %li.divider
-              %li.nav-header Nav header
-              %li
-                %a{:href => "#"} Separated link
-              %li
-                %a{:href => "#"} One more separated link
+          %li{class: ("active" if current_page?(services_path))}
+            = link_to t(:services), services_path
         - if user_signed_in?
           .btn-group.pull-right
             = link_to "#", class: "btn dropdown-toggle", data: { toggle: "dropdown" } do

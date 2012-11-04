@@ -1,0 +1,29 @@
+%h1= title t(:services)
+
+- if @services.present?
+  %p
+    = link_to t(:create_service), new_service_path, class: "btn btn-success"
+
+  %table.table
+    %thead
+      %tr
+        %th= Service.human_attribute_name(:name)
+        %th
+    %tbody
+      - @services.each do |service|
+        %tr
+          %td= service.name
+          %td
+            .btn-group.pull-right
+              = link_to edit_service_path(service), class: "btn btn-mini" do
+                %i.icon-edit
+              = link_to service, class: "btn btn-mini btn-danger", method: :delete, data: { confirm: t(:are_you_sure_delete_service) } do
+                %i.icon-trash.icon-white
+
+- else
+  = t(:no_services_yet)
+  = t(:you_can)
+  = link_to t(:create_service), new_service_path, class: "btn btn-success"
+
+.row
+  = paginate @services

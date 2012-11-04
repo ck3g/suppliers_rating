@@ -9,3 +9,7 @@
 10.times do
   Supplier.where(name: Faker::Name.name, rating: rand(6)).first_or_create
 end
+
+10.times do
+  Service.where(name: Faker::Company.name).first_or_create
+end

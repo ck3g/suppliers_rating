@@ -3,5 +3,9 @@
 FactoryGirl.define do
   factory :service do
     sequence(:name) { |n| "Service Name ##{n}" }
+
+    factory :invalid_service do
+      name ""
+    end
   end
 end
