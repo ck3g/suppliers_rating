@@ -108,7 +108,7 @@ describe SuppliersController do
       it_behaves_like "has no rights"
     end
 
-    describe "PUT #update" do
+    describe "POST #create" do
       before { post :create, supplier: attributes_for(:supplier) }
       it_behaves_like "has no rights"
     end
