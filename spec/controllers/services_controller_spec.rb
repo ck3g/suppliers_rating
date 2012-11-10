@@ -15,6 +15,11 @@ describe ServicesController do
       it { should respond_with :success }
       it { should render_template :index }
       it { should_not set_the_flash }
+
+      context "when search by 'dev'" do
+        before { get :index, term: "dev" }
+        it { should assign_to(:services).with [service_webdev] }
+      end
     end
 
     describe "GET #new" do

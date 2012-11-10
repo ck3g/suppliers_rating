@@ -16,6 +16,11 @@ describe SuppliersController do
       it { should respond_with :success }
       it { should render_template :index }
       it { should_not set_the_flash }
+
+      context "when searching by 'bob'" do
+        before { get :index, term: "bob" }
+        it { should assign_to(:suppliers).with [supplier_bob] }
+      end
     end
 
     describe "GET #new" do

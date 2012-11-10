@@ -30,4 +30,7 @@ ru:
   create_service_supplier: Добавить поставщика услуге
   from_who: от
   new_supplier_service: Новая связь поставщика и услуги
+  search: Искать
+  search_by_supplier_name: Искать по имени/названию поставщика
+  search_by_service_name: Искать по названию услуги
 

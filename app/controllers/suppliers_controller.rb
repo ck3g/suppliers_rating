@@ -4,8 +4,10 @@ class SuppliersController < ApplicationController
 
   autocomplete :supplier, :name, full: true
 
+  has_scope :term
+
   def index
-    @suppliers = SuppliersLoader.list.page(params[:page])
+    @suppliers = apply_scopes(SuppliersLoader.list).page(params[:page])
   end
 
   def show

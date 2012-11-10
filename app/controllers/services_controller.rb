@@ -4,8 +4,10 @@ class ServicesController < ApplicationController
 
   autocomplete :service, :name, full: true
 
+  has_scope :term
+
   def index
-    @services = ServicesLoader.list.page(params[:page])
+    @services = apply_scopes(ServicesLoader.list).page(params[:page])
   end
 
   def new

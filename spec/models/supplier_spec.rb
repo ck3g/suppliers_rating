@@ -26,4 +26,19 @@ describe Supplier do
       it { should_not allow_value(6).for :rating }
     end
   end
+
+  describe ".scopes" do
+    describe ".term" do
+      context "when searching by 'paul'" do
+        let!(:bob) { create :supplier, name: "Bob Dylan" }
+        let!(:brand) { create :supplier, name: "Paul Brand" }
+        let!(:jones) { create :supplier, name: "John Paul Jones"}
+
+        subject { Supplier.term("paul") }
+        it { should include brand }
+        it { should include jones }
+        it { should_not include bob }
+      end
+    end
+  end
 end

@@ -1,5 +1,7 @@
 %h1= title t(:suppliers)
 
+= render 'shared/search_form', model: Supplier, placeholder: t(:search_by_supplier_name)
+
 - if @suppliers.present?
   %p
     = link_to t(:create_supplier), new_supplier_path, class: "btn btn-success"

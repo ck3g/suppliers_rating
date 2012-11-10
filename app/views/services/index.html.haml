@@ -1,5 +1,7 @@
 %h1= title t(:services)
 
+= render 'shared/search_form', model: Service, placeholder: t(:search_by_service_name)
+
 - if @services.present?
   %p
     = link_to t(:create_service), new_service_path, class: "btn btn-success"

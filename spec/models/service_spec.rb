@@ -23,4 +23,19 @@ describe Service do
       it { should_not allow_value("Web-Development").for :name }
     end
   end
+
+  describe ".scopes" do
+    describe ".term" do
+      context "when searching by 'web'" do
+        let!(:web_design) { create :service, name: "Web design" }
+        let!(:dev_for_web) { create :service, name: "Development for Web" }
+        let!(:ios_dev) { create :service, name: "iOS development"}
+
+        subject { Service.term("web") }
+        it { should include web_design }
+        it { should include dev_for_web }
+        it { should_not include ios_dev }
+      end
+    end
+  end
 end
