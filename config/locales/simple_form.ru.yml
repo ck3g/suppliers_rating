@@ -9,6 +9,9 @@ ru:
       service:
         create: Создать
         update: Обновить
+      supplier_service:
+        create: Создать
+        update: Обновить
   simple_form:
     "yes": 'Да'
     "no": 'Нет'

@@ -12,7 +12,7 @@
     %tbody
       - @services.each do |service|
         %tr
-          %td= service.name
+          %td= link_to service.name, service_path(service)
           %td
             .btn-group.pull-right
               = link_to edit_service_path(service), class: "btn btn-mini" do
