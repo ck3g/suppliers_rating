@@ -2,6 +2,7 @@
 ru:
   project_name: Suppliers Rating
   wait: ...
+  lei: лей
   successfully_created: Успешно добавлено
   successfully_updated: Успешно обновлено
   sign_in: Вход
@@ -23,4 +24,8 @@ ru:
   create_service: Создать услугу
   are_you_sure_delete_supplier: При удалении поставщика будут удалены все его услуги и история связанная с ним. Вы действительно ходите удалить поставщика?
   are_you_sure_delete_service: При удалении услуга будет удалена из списка услуг поставщиков также будет удалена вся история связанная с данной услугой. Вы действительно хотите удалить услугу?
+  are_you_sure: Вы уверены?
+  no_supplier_services_yet: У данного поставщика нет услуг
+  create_supplier_service: Добавить услугу поставщику
+  from_who: от
 

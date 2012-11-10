@@ -1,0 +1,9 @@
+= simple_form_for supplier_service, html: { class: "form-horizontal" } do |form|
+  = hidden_field_tag :callback_url, params[:callback_url]
+  = form.input :supplier_id, as: :hidden
+  = form.input :supplier_name, input_html: { data: { autocomplete: autocomplete_supplier_name_suppliers_path, :"id-element" => "#supplier_service_supplier_id" }, name: "supplier_name" }, required: true
+  = form.input :service_id, as: :hidden
+  = form.input :service_name, input_html: { data: { autocomplete: autocomplete_service_name_services_path, :"id-element" => "#supplier_service_service_id" }, name: "service_name" }, required: true
+  = form.input :price
+  .form-actions
+    = form.button :submit, class: "btn-primary", :"data-disable-with" => t(:wait)

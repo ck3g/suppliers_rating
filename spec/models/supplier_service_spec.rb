@@ -17,6 +17,7 @@ describe SupplierService do
       it { should validate_presence_of :service_id }
       it { should validate_presence_of :price }
       it { should validate_numericality_of :price }
+      it { should allow_value(0).for :price }
     end
 
     context "when invalid" do
@@ -25,6 +26,7 @@ describe SupplierService do
       it { should_not allow_value(nil).for :service_id }
       it { should_not allow_value(nil).for :price }
       it { should_not allow_value("string").for :price }
+      it { should_not allow_value(-1).for :price }
     end
   end
 end

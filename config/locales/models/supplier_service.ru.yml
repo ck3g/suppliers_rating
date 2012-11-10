@@ -1,0 +1,8 @@
+
+ru:
+  activerecord:
+    attributes:
+      supplier_service:
+        supplier_name: Поставщик
+        service_name: Услуга
+        price: Цена

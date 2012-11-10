@@ -4,6 +4,9 @@ class SupplierService < ActiveRecord::Base
   belongs_to :supplier
   belongs_to :service
 
-  validates :supplier_id, :service_id, presence: true
-  validates :price, presence: true, numericality: true
+  validates :supplier_id, :supplier_name, :service_id, :service_name, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  delegate :name, to: :supplier, prefix: true, allow_nil: true
+  delegate :name, to: :service, prefix: true, allow_nil: true
 end

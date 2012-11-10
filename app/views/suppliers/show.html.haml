@@ -1,0 +1,33 @@
+%h1
+  = @supplier.name
+  = surround "[", "]" do
+    = @supplier.rating
+
+%ul#supplier-services.nav.nav-tabs
+  %li.active= link_to t(:services), "#services", data: { toggle: "tab" }
+
+.tab-content
+  #services.tab-pane.active
+    - if @supplier.supplier_services.present?
+      = link_to t(:create_supplier_service), new_supplier_service_path(supplier_id: @supplier.id, callback_url: supplier_path(@supplier.id)), class: "btn btn-success"
+      %table.table
+        %thead
+          %th= SupplierService.human_attribute_name(:service_name)
+          %th= SupplierService.human_attribute_name(:price)
+          %th
+        %tbody
+          - @supplier.supplier_services.each do |supplier_service|
+            %tr
+              %td= link_to supplier_service.service_name, service_path(supplier_service.service)
+              %td= number_to_currency(supplier_service.price, unit: t(:lei))
+              %td
+                .btn-group.pull-right
+                  = link_to edit_supplier_service_path(supplier_service, callback_url: supplier_path(@supplier)), class: "btn btn-mini" do
+                    %i.icon-edit
+                  = link_to supplier_service_path(supplier_service, callback_url: supplier_path(@supplier)), class: "btn btn-mini btn-danger", method: :delete, data: { confirm: t(:are_you_sure) } do
+                    %i.icon-trash.icon-white
+
+    - else
+      = t(:no_supplier_services_yet)
+      = t(:you_can)
+      = link_to t(:create_supplier_service), new_supplier_service_path(supplier_id: @supplier.id, callback_url: supplier_path(@supplier.id)), class: "btn btn-success"
