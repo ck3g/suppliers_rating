@@ -2,7 +2,10 @@ class SuppliersController < ApplicationController
   load_and_authorize_resource
   before_filter :find_supplier, only: [:show, :update, :destroy]
 
+  autocomplete :supplier, :name, full: true
+
   def index
+    # TODO: display services count
     @suppliers = Supplier.order(:name).page(params[:page])
   end
 
