@@ -5,8 +5,7 @@ class ServicesController < ApplicationController
   autocomplete :service, :name, full: true
 
   def index
-    # TODO: display suppliers count
-    @services = Service.order(:name).page(params[:page])
+    @services = ServicesLoader.list.page(params[:page])
   end
 
   def new

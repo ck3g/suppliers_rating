@@ -8,11 +8,13 @@
     %thead
       %tr
         %th= Service.human_attribute_name(:name)
+        %th= Service.human_attribute_name(:suppliers_count)
         %th
     %tbody
       - @services.each do |service|
         %tr
           %td= link_to service.name, service_path(service)
+          %td= service.suppliers_count
           %td
             .btn-group.pull-right
               = link_to edit_service_path(service), class: "btn btn-mini" do

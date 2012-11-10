@@ -9,12 +9,14 @@
       %tr
         %th= Supplier.human_attribute_name(:name)
         %th= Supplier.human_attribute_name(:rating)
+        %th= Supplier.human_attribute_name(:services_count)
         %th
     %tbody
       - @suppliers.each do |supplier|
         %tr
           %td= link_to supplier.name, supplier_path(supplier)
           %td= supplier.rating
+          %td= supplier.services_count
           %td
             .btn-group.pull-right
               = link_to edit_supplier_path(supplier), class: "btn btn-mini" do

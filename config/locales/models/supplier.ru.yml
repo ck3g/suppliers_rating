@@ -5,3 +5,4 @@ ru:
       supplier:
         name: Имя или название
         rating: Рейтинг
+        services_count: Услуг
