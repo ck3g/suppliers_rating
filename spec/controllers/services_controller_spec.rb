@@ -7,10 +7,7 @@ describe ServicesController do
   describe "user signed in" do
     login_user
     let(:user) { subject.current_user }
-
-    it "user is signed in" do
-      user.should_not be_nil
-    end
+    it_behaves_like "user is signed in"
 
     describe "GET #index" do
       before { get :index }

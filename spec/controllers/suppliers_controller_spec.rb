@@ -7,10 +7,7 @@ describe SuppliersController do
   describe "user signed in" do
     login_user
     let(:user) { subject.current_user }
-
-    it "has a valid current_user" do
-      user.should_not be_nil
-    end
+    it_behaves_like "user is signed in"
 
     describe "GET #index" do
       before { get :index }
