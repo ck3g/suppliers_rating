@@ -5,6 +5,10 @@ describe Supplier do
     create(:supplier).should be_valid
   end
 
+  describe ".associations" do
+    it { should have_many(:supplier_services).dependent(:destroy) }
+  end
+
   describe ".validations" do
     context "when valid" do
       subject { create :supplier }

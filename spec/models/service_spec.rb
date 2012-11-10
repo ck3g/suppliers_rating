@@ -5,6 +5,10 @@ describe Service do
     create(:service).should be_valid
   end
 
+  describe ".associations" do
+    it { should have_many(:supplier_services).dependent(:destroy) }
+  end
+
   describe ".validations" do
     context "when valid" do
       subject { create :service }
