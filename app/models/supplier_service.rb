@@ -3,6 +3,7 @@ class SupplierService < ActiveRecord::Base
 
   belongs_to :supplier
   belongs_to :service
+  has_many :tasks
 
   validates :supplier_id, :supplier_name, :service_id, :service_name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }

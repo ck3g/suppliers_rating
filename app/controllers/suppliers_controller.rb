@@ -37,6 +37,7 @@ class SuppliersController < ApplicationController
   end
 
   def destroy
+    # TODO: implement soft delete
     @supplier.destroy
     redirect_to suppliers_path
   end

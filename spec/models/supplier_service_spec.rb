@@ -8,6 +8,7 @@ describe SupplierService do
   describe ".associtiations" do
     it { should belong_to :supplier }
     it { should belong_to :service }
+    it { should have_many :tasks }
   end
 
   describe ".validations" do
