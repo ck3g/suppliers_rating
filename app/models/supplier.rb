@@ -2,6 +2,7 @@ class Supplier < ActiveRecord::Base
   attr_accessible :name, :rating
 
   has_many :supplier_services, dependent: :destroy
+  has_many :tasks, through: :supplier_services
 
   validates :name, presence: true
   validates :rating, presence: true, numericality: {

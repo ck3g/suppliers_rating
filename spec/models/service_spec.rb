@@ -7,6 +7,7 @@ describe Service do
 
   describe ".associations" do
     it { should have_many(:supplier_services).dependent(:destroy) }
+    it { should have_many(:tasks).through(:supplier_services) }
   end
 
   describe ".validations" do

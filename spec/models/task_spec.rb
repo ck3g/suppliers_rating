@@ -7,6 +7,8 @@ describe Task do
 
   describe ".associations" do
     it { should belong_to :supplier_service }
+    it { should have_one(:supplier).through(:supplier_service) }
+    it { should have_one(:service).through(:supplier_service) }
   end
 
   describe ".validations" do
