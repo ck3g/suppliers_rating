@@ -16,3 +16,7 @@
 //= require twitter/bootstrap
 //= require autocomplete-rails
 //= require_tree .
+
+$(function() {
+  $("a[title]").tooltip();
+});

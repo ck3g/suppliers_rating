@@ -1,0 +1,34 @@
+- if service.tasks.present?
+  %table.table
+    %thead
+      %tr
+        %th
+          %th= Task.human_attribute_name(:title)
+          %th= Task.human_attribute_name(:supplier_name)
+          %th= Task.human_attribute_name(:created_at)
+          %th= Task.human_attribute_name(:finished_at)
+    %body
+      - service.tasks.each do |task|
+        %tr
+          %td
+            - if task.open?
+              %span.badge.badge-success> &nbsp;
+            - else
+              %span.badge.badge-important> &nbsp;
+          %td= task.title
+          %td= task.supplier_name
+          %td= l task.created_at, format: :long
+          %td
+            - if task.finished_at.present?
+              = l taks.finished_at, format: :long
+            - else
+              = t(:not_finished)
+          %td
+            .btn-group.pull-right
+              = link_to edit_task_path(task, callback_url: service_path(service)), class: "btn btn-mini", title: t(:edit) do
+                %i.icon-edit
+              = link_to task_path(task, callback_url: service_path(service)), class: "btn btn-mini btn-danger", title: t(:delete), method: :delete, data: { confirm: t(:are_you_sure) } do
+                %i.icon-trash.icon-white
+
+  - else
+    = t(:no_tasks_yet)

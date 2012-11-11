@@ -14,4 +14,11 @@ class Task < ActiveRecord::Base
   delegate :supplier_name, to: :supplier_service, prefix: false
   delegate :service_name, to: :supplier_service, prefix: false
 
+  def closed?
+    status == "closed"
+  end
+
+  def open?
+    status == "open"
+  end
 end

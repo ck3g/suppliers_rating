@@ -33,4 +33,11 @@ ru:
   search: Искать
   search_by_supplier_name: Искать по имени/названию поставщика
   search_by_service_name: Искать по названию услуги
+  new_task: Новая задача
+  edit: Редактировать
+  delete: Удалить
+  for: Для
+  tasks: Задачи
+  not_finished: Не закончена
+  no_tasks_yet: Список задач пуст
 

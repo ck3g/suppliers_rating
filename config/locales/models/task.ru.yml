@@ -1,0 +1,13 @@
+
+ru:
+  activerecord:
+    attributes:
+      task:
+        title: Заголовок
+        description: Описание
+        cost: Сумма
+        status: Состояние
+        service_name: Услуга
+        supplier_name: Поставщик
+        created_at: Дата создания
+        finished_at: Дата окончания

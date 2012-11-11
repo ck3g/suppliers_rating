@@ -8,5 +8,9 @@ FactoryGirl.define do
     cost "9.99"
     status "open"
     rating 5
+
+    factory :invalid_task do
+      title nil
+    end
   end
 end

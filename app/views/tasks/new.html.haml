@@ -1,0 +1,7 @@
+%h1= title t(:new_task)
+%h3
+  = succeed ":" do
+    = t(:for)
+  = task_supplier_and_service @task
+
+= render 'form', task: @task

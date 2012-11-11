@@ -11,7 +11,11 @@ SuppliersRating::Application.routes.draw do
     get :autocomplete_service_name, on: :collection
   end
 
-  resources :supplier_services
+  resources :supplier_services do
+    resources :tasks, only: [:new]
+  end
+
+  resources :tasks, except: [:new]
 
   root :to => 'welcome#index'
 end
