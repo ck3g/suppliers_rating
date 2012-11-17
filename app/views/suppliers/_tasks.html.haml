@@ -15,7 +15,7 @@
               %span.badge.badge-success> &nbsp;
             - else
               %span.badge.badge-important> &nbsp;
-          %td= task.title
+          %td= link_to task.title, task_path(task)
           %td= task.service_name
           %td= l task.created_at, format: :long
           %td
