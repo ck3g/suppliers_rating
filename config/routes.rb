@@ -20,5 +20,5 @@ SuppliersRating::Application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  root :to => 'welcome#index'
+  root :to => 'tasks#index'
 end

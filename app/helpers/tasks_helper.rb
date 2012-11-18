@@ -4,6 +4,6 @@ module TasksHelper
   end
 
   def task_full_title(task)
-    [task.title, task.supplier_name, task.service_name, number_to_currency(task.cost, unit: t(:lei))].compact.join(" | ")
+    [task.title, task.supplier_name_with_rating, task.service_name, number_to_currency(task.cost, unit: t(:lei))].compact.join(" | ")
   end
 end

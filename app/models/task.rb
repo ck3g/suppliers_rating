@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES }
   validates :rating, allow_blank: true, inclusion: { in: 1..5 }
 
-  delegate :supplier_name, to: :supplier_service, prefix: false
+  delegate :supplier_name, :supplier_name_with_rating, to: :supplier_service, prefix: false
   delegate :service_name, to: :supplier_service, prefix: false
 
   def closed?
@@ -24,7 +24,7 @@ class Task < ActiveRecord::Base
   end
 
   def close_with_rating!(rating)
-    update_attributes status: "closed", rating: rating
+    update_attributes status: "closed", rating: rating, finished_at: Time.current
     reload
     self.supplier.recalculate_rating!
   end

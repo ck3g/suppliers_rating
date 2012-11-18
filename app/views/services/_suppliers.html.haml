@@ -8,7 +8,7 @@
     %tbody
       - service.supplier_services.each do |supplier_service|
         %tr
-          %td= link_to supplier_service.supplier_name, supplier_path(supplier_service.supplier)
+          %td= link_to supplier_service.supplier_name_with_rating, supplier_path(supplier_service.supplier)
           %td= number_to_currency(supplier_service.price, unit: t(:lei))
           %td
             .btn-group.pull-right

@@ -42,4 +42,31 @@ describe Supplier do
       end
     end
   end
+
+  describe "#recalculate_rating!" do
+    let(:supplier1) { create :supplier }
+    let!(:task1) { create :task, supplier: supplier1, rating: 5 }
+    let!(:task2) { create :task, supplier: supplier1, rating: 5 }
+    let!(:task3) { create :task, supplier: supplier1, rating: 4 }
+    let!(:task4) { create :task, supplier: supplier1, rating: 3 }
+
+    it "recalculates the supplier's rating" do
+      expect {
+        supplier1.recalculate_rating!
+        supplier1.reload
+      }.to change(supplier1, :round_rating).to(4.25)
+    end
+
+    let(:supplier2) { create :supplier }
+    let!(:task5) { create :task, supplier: supplier2, rating: 5 }
+    let!(:task6) { create :task, supplier: supplier2, rating: 4 }
+    let!(:task7) { create :task, supplier: supplier2, rating: 5 }
+
+    it "recalculates the supplier's rating" do
+      expect {
+        supplier2.recalculate_rating!
+        supplier2.reload
+      }.to change(supplier2, :round_rating).to(4.67)
+    end
+  end
 end

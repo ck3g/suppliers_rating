@@ -16,8 +16,8 @@
     %tbody
       - @suppliers.each do |supplier|
         %tr
-          %td= link_to supplier.name, supplier_path(supplier)
-          %td= supplier.rating
+          %td= link_to supplier.name_with_rating, supplier_path(supplier)
+          %td= supplier.round_rating
           %td= supplier.services_count
           %td
             .btn-group.pull-right

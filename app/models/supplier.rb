@@ -12,7 +12,17 @@ class Supplier < ActiveRecord::Base
   scope :term, ->(term) { where{ name.like_any term.split.map { |word| "%#{word}%" } } }
 
   def recalculate_rating!
+    ratings = tasks.pluck(:rating)
+    rating = ratings.inject(&:+).to_f / ratings.count
+    update_column :rating, rating
+  end
 
+  def round_rating
+    rating.to_f.round(2)
+  end
+
+  def name_with_rating
+    "#{name} [#{round_rating}]"
   end
 end
 

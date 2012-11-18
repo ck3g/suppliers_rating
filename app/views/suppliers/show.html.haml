@@ -1,7 +1,4 @@
-%h1
-  = @supplier.name
-  = surround "[", "]" do
-    = @supplier.rating
+%h1= title @supplier.name_with_rating
 
 %ul#supplier-services.nav.nav-tabs
   %li.active= link_to t(:services), "#services", data: { toggle: "tab" }

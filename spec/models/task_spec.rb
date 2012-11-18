@@ -47,6 +47,12 @@ describe Task do
         task.close_with_rating! 3
       }.to change(task, :rating).to(3)
     end
+
+    it "set finished_at date" do
+      expect {
+        task.close_with_rating! 3
+      }.to change(task, :finished_at)
+    end
   end
 
   describe "#reopen!" do
