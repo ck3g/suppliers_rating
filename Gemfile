@@ -8,7 +8,7 @@ gem "cancan"
 gem "haml-rails"
 gem 'jquery-rails'
 gem "has_scope"
-gem 'anjlab-bootstrap-rails', ">= 2.2", require: 'bootstrap-rails'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'meta-tags', require: "meta_tags"
 gem 'simple_form'
 gem "faker", "~> 1.0.1"
@@ -20,6 +20,7 @@ gem "thin"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem "less-rails"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
   gem "therubyracer"
