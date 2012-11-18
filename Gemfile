@@ -17,10 +17,10 @@ gem "kaminari", "~> 0.14.1"
 gem "rails3-jquery-autocomplete"
 gem "squeel", "~> 1.0.13"
 gem "thin"
+gem "less-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem "less-rails"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
   gem "therubyracer"
