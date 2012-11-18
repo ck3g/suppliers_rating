@@ -8,8 +8,7 @@ gem "cancan"
 gem "haml-rails"
 gem 'jquery-rails'
 gem "has_scope"
-gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
-                              git: 'git://github.com/anjlab/bootstrap-rails.git'
+gem 'anjlab-bootstrap-rails', ">= 2.2", require: 'bootstrap-rails'
 gem 'meta-tags', require: "meta_tags"
 gem 'simple_form'
 gem "faker", "~> 1.0.1"
