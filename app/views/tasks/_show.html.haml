@@ -15,7 +15,7 @@
   .thumbnail
     - if task.open?
       = simple_form_for [task, comment], html: { remote: true } do |f|
-        = f.input :message, label: false, input_html: { class: "width99", rows: 6, value: "" }, placeholder: t(:ctrl_enter_description)
+        = f.input :message, label: false, input_html: { class: "width99", rows: 6, value: "" }, placeholder: t(:ctrl_enter_description), autofocus: true
         .controls-row
           .pull-left
             = check_box_tag :close
