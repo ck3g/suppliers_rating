@@ -21,9 +21,9 @@
           %td= supplier.services_count
           %td
             .btn-group.pull-right
-              = link_to edit_supplier_path(supplier), class: "btn btn-mini" do
+              = link_to edit_supplier_path(supplier), class: "btn btn-small" do
                 %i.icon-edit
-              = link_to supplier, class: "btn btn-mini btn-danger", method: :delete, data: { confirm: t(:are_you_sure_delete_supplier) } do
+              = link_to supplier, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:are_you_sure_delete_supplier) } do
                 %i.icon-trash.icon-white
 
 - else

@@ -12,11 +12,11 @@
           %td= number_to_currency(supplier_service.price, unit: t(:lei))
           %td
             .btn-group.pull-right
-              = link_to new_supplier_service_task_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-mini btn-success", title: t(:new_task) do
+              = link_to new_supplier_service_task_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-small btn-success", title: t(:new_task) do
                 %i.icon-tasks.icon-white
-              = link_to edit_supplier_service_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-mini", title: t(:edit) do
+              = link_to edit_supplier_service_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-small", title: t(:edit) do
                 %i.icon-edit
-              = link_to supplier_service_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-mini btn-danger", title: t(:delete), method: :delete, data: { confirm: t(:are_you_sure) } do
+              = link_to supplier_service_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-small btn-danger", title: t(:delete), method: :delete, data: { confirm: t(:are_you_sure) } do
                 %i.icon-trash.icon-white
 
 - else
