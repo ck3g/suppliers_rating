@@ -17,6 +17,7 @@ gem "russian"
 gem "kaminari", "~> 0.14.1"
 gem "rails3-jquery-autocomplete"
 gem "squeel", "~> 1.0.13"
+gem "thin"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,7 +32,6 @@ group :development do
   gem 'capistrano_colors',  require: false
   gem "erb2haml"
   gem "rails_best_practices"
-  gem "thin"
   gem "pry-rails"
 end
 
