@@ -34,6 +34,16 @@ describe Task do
     end
   end
 
+  describe ".scopes" do
+    describe ".closed" do
+      let!(:task) { create :task }
+      let!(:closed_task) { create :closed_task }
+      it "finds only closed tasks" do
+        Task.closed.should == [closed_task]
+      end
+    end
+  end
+
   describe "#close_with_rating!" do
     let!(:task) { create :task }
     it "closes the task" do
@@ -57,10 +67,26 @@ describe Task do
 
   describe "#reopen!" do
     let!(:closed_task) { create :closed_task }
+    let!(:closed_task2) { create :closed_task }
     it "it reopens the task" do
       expect {
         closed_task.reopen!
+        closed_task.reload
       }.to change(closed_task, :status).to("open")
+    end
+
+    it "it resets the finished_at" do
+      expect {
+        closed_task2.reopen!
+        closed_task2.reload
+      }.to change(closed_task2, :finished_at).to(nil)
+    end
+
+    it "it resets rating" do
+      expect {
+        closed_task2.reopen!
+        closed_task2.reload
+      }.to change(closed_task2, :rating).to(nil)
     end
   end
 end

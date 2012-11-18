@@ -15,6 +15,8 @@ class Task < ActiveRecord::Base
   delegate :supplier_name, :supplier_name_with_rating, to: :supplier_service, prefix: false
   delegate :service_name, to: :supplier_service, prefix: false
 
+  scope :closed, -> { where{ status == "closed" } }
+
   def closed?
     status == "closed"
   end
@@ -25,12 +27,13 @@ class Task < ActiveRecord::Base
 
   def close_with_rating!(rating)
     update_attributes status: "closed", rating: rating, finished_at: Time.current
-    reload
     self.supplier.recalculate_rating!
   end
 
   def reopen!
     update_column :status, "open"
-    reload
+    update_column :finished_at, nil
+    update_column :rating, nil
+    self.supplier.recalculate_rating!
   end
 end

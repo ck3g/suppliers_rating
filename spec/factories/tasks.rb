@@ -15,6 +15,7 @@ FactoryGirl.define do
 
     factory :closed_task do
       status "closed"
+      finished_at Time.current
     end
   end
 end

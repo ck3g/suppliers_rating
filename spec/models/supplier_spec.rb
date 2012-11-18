@@ -45,10 +45,11 @@ describe Supplier do
 
   describe "#recalculate_rating!" do
     let(:supplier1) { create :supplier }
-    let!(:task1) { create :task, supplier: supplier1, rating: 5 }
-    let!(:task2) { create :task, supplier: supplier1, rating: 5 }
-    let!(:task3) { create :task, supplier: supplier1, rating: 4 }
-    let!(:task4) { create :task, supplier: supplier1, rating: 3 }
+    let!(:task1) { create :closed_task, supplier: supplier1, rating: 5 }
+    let!(:task2) { create :closed_task, supplier: supplier1, rating: 5 }
+    let!(:task3) { create :closed_task, supplier: supplier1, rating: 4 }
+    let!(:task4) { create :closed_task, supplier: supplier1, rating: 3 }
+    let!(:task5) { create :task, supplier: supplier1, rating: 3 }
 
     it "recalculates the supplier's rating" do
       expect {
@@ -58,9 +59,10 @@ describe Supplier do
     end
 
     let(:supplier2) { create :supplier }
-    let!(:task5) { create :task, supplier: supplier2, rating: 5 }
-    let!(:task6) { create :task, supplier: supplier2, rating: 4 }
-    let!(:task7) { create :task, supplier: supplier2, rating: 5 }
+    let!(:task6) { create :closed_task, supplier: supplier2, rating: 5 }
+    let!(:task7) { create :closed_task, supplier: supplier2, rating: 4 }
+    let!(:task8) { create :closed_task, supplier: supplier2, rating: 5 }
+    let!(:task9) { create :task, supplier: supplier2, rating: 5 }
 
     it "recalculates the supplier's rating" do
       expect {
