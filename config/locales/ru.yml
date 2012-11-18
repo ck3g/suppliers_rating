@@ -40,4 +40,9 @@ ru:
   tasks: Задачи
   not_finished: Не закончена
   no_tasks_yet: Список задач пуст
+  do_comment: Комментировать
+  comment_and_close: Комментировать и закрыть
+  close: Закрыть
+  ctrl_enter_description: "Для отправки комментария можно использовать сочетание клавиш Ctrl + Enter"
+  reopen: Открыть снова
 

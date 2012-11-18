@@ -11,3 +11,4 @@ ru:
         supplier_name: Поставщик
         created_at: Дата создания
         finished_at: Дата окончания
+        rating: Оценка

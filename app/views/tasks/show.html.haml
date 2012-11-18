@@ -1,21 +1,4 @@
 - title @task.title
 
-.thumbnail
-  .navbar
-    .navbar-inner
-      %h5= task_full_title(@task)
-  %p
-    = simple_format @task.description
-
-%p
-  #comments
-    - @comments = []
-    - @comments.each do |comment|
-      .thumbnail
-        .navbar
-          .navbar-inner
-            = l comment.created_at, format: :long
-
-%p
-  .thumbnail
-
+%div{id: dom_id(@task)}
+  = render 'show', task: @task, comments: @comments, comment: @comment

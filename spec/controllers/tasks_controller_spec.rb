@@ -110,6 +110,20 @@ describe TasksController do
         it { should redirect_to root_path }
       end
     end
+
+    describe "POST #reopen" do
+      let!(:closed_task1) { create :closed_task }
+      let!(:closed_task2) { create :closed_task }
+      before { xhr :post, :reopen, id: closed_task1 }
+      it { should render_template :reload }
+      it { should assign_to(:task).with closed_task1 }
+      it "changes the status to open" do
+        expect {
+          xhr :post, :reopen, id: closed_task2
+          closed_task2.reload
+        }.to change(closed_task2, :status).to("open")
+      end
+    end
   end
 
   describe "user is not signed in" do
@@ -140,6 +154,11 @@ describe TasksController do
 
     describe "PUT #update" do
       before { put :update, id: task, service: attributes_for(:task) }
+      it_behaves_like "has no rights"
+    end
+
+    describe "POST #reopen" do
+      before { post :reopen, id: task }
       it_behaves_like "has no rights"
     end
 

@@ -10,5 +10,9 @@ class Supplier < ActiveRecord::Base
     less_than_or_equal_to: 5 }
 
   scope :term, ->(term) { where{ name.like_any term.split.map { |word| "%#{word}%" } } }
+
+  def recalculate_rating!
+
+  end
 end
 

@@ -1,0 +1,10 @@
+- comments.each do |comment|
+  %p
+    .thumbnail
+      .navbar
+        .navbar-inner
+          %h6.pull-left= l comment.created_at, format: :long
+          %ul.nav.pull-right
+            %li= link_to t(:delete), [comment.commentable, comment], method: :delete, data: { confirm: t(:are_you_sure) }, class: "red", remote: true
+      %p
+        = simple_format comment.message

@@ -6,6 +6,7 @@ class Task < ActiveRecord::Base
   belongs_to :supplier_service
   has_one :supplier, through: :supplier_service
   has_one :service, through: :supplier_service
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :supplier_service_id, :title, :status, presence: true
   validates :status, inclusion: { in: STATUSES }
@@ -20,5 +21,16 @@ class Task < ActiveRecord::Base
 
   def open?
     status == "open"
+  end
+
+  def close_with_rating!(rating)
+    update_attributes status: "closed", rating: rating
+    reload
+    self.supplier.recalculate_rating!
+  end
+
+  def reopen!
+    update_column :status, "open"
+    reload
   end
 end

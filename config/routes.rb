@@ -15,7 +15,10 @@ SuppliersRating::Application.routes.draw do
     resources :tasks, only: [:new]
   end
 
-  resources :tasks, except: [:new]
+  resources :tasks, except: [:new] do
+    post :reopen, on: :member
+    resources :comments, only: [:create, :destroy]
+  end
 
   root :to => 'welcome#index'
 end

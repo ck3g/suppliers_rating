@@ -9,6 +9,7 @@ describe Task do
     it { should belong_to :supplier_service }
     it { should have_one(:supplier).through(:supplier_service) }
     it { should have_one(:service).through(:supplier_service) }
+    it { should have_many :comments }
   end
 
   describe ".validations" do
@@ -30,6 +31,30 @@ describe Task do
       it { should_not allow_value("unknown-status").for :status }
       it { should_not allow_value(0).for :status }
       it { should_not allow_value(6).for :status }
+    end
+  end
+
+  describe "#close_with_rating!" do
+    let!(:task) { create :task }
+    it "closes the task" do
+      expect {
+        task.close_with_rating! 5
+      }.to change(task, :status).to("closed")
+    end
+
+    it "set rating to 3" do
+      expect {
+        task.close_with_rating! 3
+      }.to change(task, :rating).to(3)
+    end
+  end
+
+  describe "#reopen!" do
+    let!(:closed_task) { create :closed_task }
+    it "it reopens the task" do
+      expect {
+        closed_task.reopen!
+      }.to change(closed_task, :status).to("open")
     end
   end
 end

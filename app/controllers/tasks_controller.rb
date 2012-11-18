@@ -1,8 +1,11 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
 
+  respond_to :html, :js
+
   before_filter :find_supplier_service, only: [:new, :create]
-  before_filter :find_task, only: [:show, :edit, :update, :destroy]
+  before_filter :find_task, only: [:show, :edit, :update, :destroy, :reopen]
+  before_filter :find_comments, only: [:show, :reopen]
 
   def index
     @tasks = Task.order("created_at DESC").page(params[:page])
@@ -22,7 +25,6 @@ class TasksController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -35,6 +37,11 @@ class TasksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def reopen
+    @task.reopen!
+    render :reload
   end
 
   def destroy
@@ -53,5 +60,10 @@ class TasksController < ApplicationController
 
   def callback_url
     params[:callback_url] || tasks_path
+  end
+
+  def find_comments
+    @comments = @task.comments.order(:created_at)
+    @comment = @task.comments.new
   end
 end

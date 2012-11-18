@@ -12,5 +12,9 @@ FactoryGirl.define do
     factory :invalid_task do
       title nil
     end
+
+    factory :closed_task do
+      status "closed"
+    end
   end
 end
