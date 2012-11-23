@@ -1,0 +1,35 @@
+- if suppliers.present?
+  %p
+    = link_to t(:create_supplier), new_supplier_path, class: "btn btn-success"
+
+  %table.table
+    %thead
+      %tr
+        %th= Supplier.human_attribute_name(:name)
+        %th= Supplier.human_attribute_name(:rating)
+        %th= Supplier.human_attribute_name(:services_count)
+        %th= Supplier.human_attribute_name(:active_tasks_count)
+        %th
+    %tbody
+      - suppliers.each do |supplier|
+        %tr
+          %td= link_to supplier.name_with_rating, supplier_path(supplier)
+          %td= supplier.round_rating
+          %td= link_to supplier.services_count, supplier_path(supplier)
+          %td= link_to supplier.tasks.opened.count, tasks_supplier_path(supplier)
+          %td
+            .btn-group.pull-right
+              = link_to new_from_scratch_path(supplier_id: supplier.id), class: "btn btn-small btn-success", title: t(:new_task) do
+                %i.icon-tasks.icon-white
+              = link_to edit_supplier_path(supplier), class: "btn btn-small" do
+                %i.icon-edit
+              = link_to supplier, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:are_you_sure_delete_supplier) } do
+                %i.icon-trash.icon-white
+
+- else
+  = t(:no_suppliers_yet)
+  = t(:you_can)
+  = link_to t(:create_supplier), new_supplier_path, class: "btn btn-success"
+
+.row
+  = paginate suppliers

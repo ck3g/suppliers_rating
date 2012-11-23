@@ -1,7 +1,11 @@
 class Task < ActiveRecord::Base
   STATUSES = %w[open closed]
 
-  attr_accessible :cost, :description, :finished_at, :rating, :status, :supplier_service_id, :title
+  attr_accessible :cost, :description, :finished_at, :rating, :status,
+    :supplier_service_id, :title, :supplier_id, :service_id, :supplier_name,
+    :service_name
+
+  attr_accessor :supplier_id, :service_id, :supplier_name, :service_name
 
   belongs_to :supplier_service
   has_one :supplier, through: :supplier_service
@@ -12,9 +16,9 @@ class Task < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES }
   validates :rating, allow_blank: true, inclusion: { in: 1..5 }
 
-  delegate :supplier_name, :supplier_name_with_rating, to: :supplier_service, prefix: false
-  delegate :service_name, to: :supplier_service, prefix: false
+  delegate :supplier_name_with_rating, to: :supplier_service, prefix: false
 
+  scope :opened, -> { where{ status == "open" } }
   scope :closed, -> { where{ status == "closed" } }
 
   def closed?
@@ -35,5 +39,14 @@ class Task < ActiveRecord::Base
     update_column :finished_at, nil
     update_column :rating, nil
     self.supplier.recalculate_rating!
+  end
+
+  def self.init_from_supplier_and_service(supplier, service, params = {})
+    Task.new params.merge({
+      supplier_id: supplier.try(:id),
+      supplier_name: supplier.try(:name),
+      service_id: service.try(:id),
+      service_name: service.try(:name)
+    })
   end
 end

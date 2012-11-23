@@ -1,0 +1,6 @@
+- if user_signed_in?
+  .span4.offset4
+    = link_to t(:new_task), new_from_scratch_path, class: "btn btn-large btn-block btn-primary"
+  .clearfix
+
+  = render 'suppliers/suppliers', suppliers: @suppliers

@@ -19,8 +19,11 @@ SuppliersRating::Application.routes.draw do
 
   resources :tasks, except: [:new] do
     post :reopen, on: :member
+    post :create_from_scratch, on: :collection
     resources :comments, only: [:create, :destroy]
   end
+
+  get "new_task" => "tasks#new_from_scratch", as: :new_from_scratch
 
   root :to => 'welcome#index'
 end

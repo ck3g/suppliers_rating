@@ -24,6 +24,13 @@ describe TasksController do
       it { should render_template :new }
     end
 
+    describe "GET #new_from_scratch" do
+      before { get :new_from_scratch }
+      it { should assign_to(:task).with_kind_of Task }
+      it { should respond_with :success }
+      it { should render_template :new_from_scratch }
+    end
+
     describe "POST #create" do
       context "with valid parameters" do
         before { post :create, task: attributes_for(:task), supplier_service_id: ss.id }
@@ -49,6 +56,46 @@ describe TasksController do
           expect {
             post :create, task: attributes_for(:invalid_task), supplier_service_id: ss.id
           }.to_not change(Task, :count).by(1)
+        end
+      end
+    end
+
+    describe "POST #create_from_scratch" do
+      let!(:supplier) { create :supplier }
+      let!(:service) { create :service }
+      let!(:another_service) { create :service }
+
+      context "when valid parameters" do
+        context "when suppliers_service not exists" do
+          before { post :create_from_scratch, task: attributes_for(:task, supplier_id: supplier.id, service_id: service.id) }
+          it { should redirect_to root_path }
+          it { should set_the_flash[:notice].to I18n.t(:successfully_created) }
+
+          it "creates new supplier_service" do
+            expect {
+              post :create_from_scratch, task: attributes_for(:task, supplier_id: supplier.id, service_id: another_service.id)
+            }.to change(SupplierService, :count).by(1)
+          end
+        end
+
+        context "when suppliers_service is exists" do
+
+        end
+      end
+
+      context 'when invalid parameters' do
+        context "when supplier invalid" do
+          before { post :create_from_scratch, task: attributes_for(:task, service_id: service.id) }
+          it { should render_template :new_from_scratch }
+          it { should set_the_flash[:alert].to I18n.t(:invalid_supplier) }
+          it { should assign_to(:task).with_kind_of Task }
+        end
+
+        context "when service invalid" do
+          before { post :create_from_scratch, task: attributes_for(:task, supplier_id: supplier.id) }
+          it { should render_template :new_from_scratch }
+          it { should set_the_flash[:alert].to I18n.t(:invalid_service) }
+          it { should assign_to(:task).with_kind_of Task }
         end
       end
     end
@@ -137,8 +184,18 @@ describe TasksController do
       it_behaves_like "has no rights"
     end
 
+    describe "GET #new_from_scratch" do
+      before { get :new_from_scratch }
+      it_behaves_like "has no rights"
+    end
+
     describe "POST #create" do
       before { post :create, task: attributes_for(:task) }
+      it_behaves_like "has no rights"
+    end
+
+    describe "POST #create_from_scratch" do
+      before { post :create_from_scratch, task: attributes_for(:task) }
       it_behaves_like "has no rights"
     end
 

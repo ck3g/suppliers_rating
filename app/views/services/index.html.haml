@@ -19,6 +19,8 @@
           %td= service.suppliers_count
           %td
             .btn-group.pull-right
+              = link_to new_from_scratch_path(service_id: service.id), class: "btn btn-small btn-success", title: t(:new_task) do
+                %i.icon-tasks.icon-white
               = link_to edit_service_path(service), class: "btn btn-small" do
                 %i.icon-edit
               = link_to service, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:are_you_sure_delete_service) } do

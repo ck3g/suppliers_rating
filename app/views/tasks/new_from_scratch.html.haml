@@ -1,0 +1,14 @@
+%h1= title t(:new_task)
+
+%p= t(:no_supplier_service_description)
+
+= simple_form_for @task, url: create_from_scratch_tasks_path, html: { class: "form-horizontal" } do |form|
+  = form.input :supplier_id, as: :hidden
+  = form.input :supplier_name, input_html: { data: { autocomplete: autocomplete_supplier_name_suppliers_path, :"id-element" => "#task_supplier_id" }, name: "supplier_name", value: @task.supplier_name }, required: true
+  = form.input :service_id, as: :hidden
+  = form.input :service_name, input_html: { data: { autocomplete: autocomplete_service_name_services_path, :"id-element" => "#task_service_id" }, name: "service_name", value: @task.service_name }, required: true
+  = form.input :title, input_html: { class: "input-xxlarge" }
+  = form.input :description, input_html: { class: "input-xxlarge", rows: 5 }
+  = form.input :cost
+  .form-actions
+    = form.button :submit, class: "btn btn-primary", :"data-disable-with" => t(:wait)

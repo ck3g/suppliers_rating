@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe SuppliersController do
-  let!(:supplier_bob) { create :supplier, name: "Bob" }
-  let!(:supplier_smith) { create :supplier, name: "Smith" }
+  let!(:supplier_bob) { create :supplier, name: "Bob", rating: 5 }
+  let!(:supplier_smith) { create :supplier, name: "Smith", rating: 4 }
 
   describe "user signed in" do
     login_user
