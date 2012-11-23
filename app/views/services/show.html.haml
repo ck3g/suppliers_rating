@@ -1,12 +1,9 @@
 %h1= title @service.name
 
 %ul#service-suppliers.nav.nav-tabs
-  %li.active= link_to t(:suppliers), "#suppliers", data: { toggle: "tab" }
-  %li= link_to t(:tasks), "#tasks", data: { toggle: "tab" }
+  %li.active= link_to t(:suppliers), "#suppliers"
+  %li= link_to t(:tasks), tasks_service_path(@service)
 
 .tab-content
   #suppliers.tab-pane.active
     = render 'suppliers', service: @service
-
-  #tasks.tab-pane
-    = render 'tasks', service: @service

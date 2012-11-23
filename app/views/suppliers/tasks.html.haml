@@ -1,0 +1,9 @@
+%h1= title @supplier.name_with_rating
+
+%ul#supplier-services.nav.nav-tabs
+  %li= link_to t(:services), supplier_path(@supplier)
+  %li.active= link_to t(:tasks), "#"
+
+.tab-content
+  #tasks.tab-pane.active
+    = render 'tasks', supplier: @supplier

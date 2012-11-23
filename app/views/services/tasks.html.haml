@@ -1,0 +1,10 @@
+%h1= title @service.name
+
+%ul#service-suppliers.nav.nav-tabs
+  %li= link_to t(:suppliers), service_path(@service)
+  %li.active= link_to t(:tasks), "#tasks"
+
+.tab-content
+  #tasks.tab-pane.active
+    = render 'tasks', service: @service
+

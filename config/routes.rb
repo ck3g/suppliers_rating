@@ -5,10 +5,12 @@ SuppliersRating::Application.routes.draw do
 
   resources :suppliers do
     get :autocomplete_supplier_name, on: :collection
+    get :tasks, on: :member
   end
 
   resources :services do
     get :autocomplete_service_name, on: :collection
+    get :tasks, on: :member
   end
 
   resources :supplier_services do

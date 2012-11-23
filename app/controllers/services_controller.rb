@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   load_and_authorize_resource
-  before_filter :find_service, only: [:edit, :update, :destroy]
+  before_filter :find_service, only: [:edit, :update, :destroy, :show, :tasks]
 
   autocomplete :service, :name, full: true
 
@@ -8,6 +8,9 @@ class ServicesController < ApplicationController
 
   def index
     @services = apply_scopes(ServicesLoader.list).page(params[:page])
+  end
+
+  def tasks
   end
 
   def new
