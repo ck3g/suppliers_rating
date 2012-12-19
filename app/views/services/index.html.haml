@@ -1,5 +1,10 @@
 %h1= title t(:services)
 
+%ul#categories.nav.nav-tabs
+  - categories.each do |id, name|
+    %li{class: ("active" if params[:category_id] == id)}
+      = link_to name, services_path(category_id: id)
+
 = render 'shared/search_form', model: Service, placeholder: t(:search_by_service_name)
 
 - if @services.present?

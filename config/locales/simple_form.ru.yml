@@ -15,6 +15,9 @@ ru:
       task:
         create: Создать
         update: Обновить
+      category:
+        create: Создать
+        update: Обновить
   simple_form:
     "yes": 'Да'
     "no": 'Нет'

@@ -48,4 +48,9 @@ ru:
   no_supplier_service_description: В том случае если связи поставщика и услуги не существует она будет автоматически создана. Цена за услугу будет установлена исходя из указаной суммы.
   invalid_supplier: Неверный поставщик
   invalid_service: Неверная услуга
+  categories: Категории
+  no_categories_yet: Список категорий пуст
+  create_category: Создать категорию
+  new_category: Новая категория
+  all: Все
 

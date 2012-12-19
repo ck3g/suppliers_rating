@@ -1,0 +1,27 @@
+%h1= title t(:categories)
+
+- if @categories.present?
+  %p
+    = link_to t(:create_category), new_category_path, class: "btn btn-success"
+
+  %table.table
+    %thead
+      %tr
+        %th= Category.human_attribute_name(:name)
+        %th
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td= link_to category.name, services_path(category_id: category.id)
+          %td
+            .btn-group.pull-right
+              = link_to edit_category_path(category), class: "btn btn-small" do
+                %i.icon-edit
+              = link_to category, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:are_you_sure) } do
+                %i.icon-trash.icon-white
+
+- else
+  = t(:no_categories_yet)
+  = t(:you_can)
+  = link_to t(:create_category), new_category_path, class: "btn btn-success"
+

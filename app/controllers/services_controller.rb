@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   autocomplete :service, :name, full: true
 
   has_scope :term
+  has_scope :category_id
 
   def index
     @services = apply_scopes(ServicesLoader.list).page(params[:page])
