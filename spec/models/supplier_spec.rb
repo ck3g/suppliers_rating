@@ -24,7 +24,7 @@ describe Supplier do
       it { should_not allow_value(nil).for :name }
       it { should_not allow_value(nil).for :rating }
       it { should_not allow_value(-1).for :rating }
-      it { should_not allow_value(6).for :rating }
+      it { should_not allow_value(11).for :rating }
     end
   end
 

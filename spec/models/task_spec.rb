@@ -20,7 +20,7 @@ describe Task do
       it { should validate_presence_of :status }
       it { should ensure_inclusion_of(:status).in_array Task::STATUSES }
       it { should allow_value(nil).for(:rating) }
-      it { should ensure_inclusion_of(:rating).in_range(1..5) }
+      it { should ensure_inclusion_of(:rating).in_range(1..10) }
     end
 
     context "when invalid" do
@@ -30,7 +30,7 @@ describe Task do
       it { should_not allow_value(nil).for :status }
       it { should_not allow_value("unknown-status").for :status }
       it { should_not allow_value(0).for :status }
-      it { should_not allow_value(6).for :status }
+      it { should_not allow_value(11).for :status }
     end
   end
 

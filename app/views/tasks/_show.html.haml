@@ -23,7 +23,7 @@
           .pull-right
             %span#js-task-rating.hide
               = label_tag :task_rating, Task.human_attribute_name(:rating), class: "display-inline"
-              = number_field_tag :task_rating, 5, in: 1..5, class: "task-rating"
+              = number_field_tag :task_rating, 10, in: 1..10, class: "task-rating"
             = f.button :submit, t(:do_comment), class: "btn btn-success", name: "do_comment", id: "js-do-comment", :"data-disable-with" => t(:wait)
             = f.button :submit, t(:comment_and_close), class: "btn btn-danger hide", name: "comment_and_close", id: "js-comment-and-close", :"data-disable-with" => t(:wait)
     - else

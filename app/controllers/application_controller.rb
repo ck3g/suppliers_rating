@@ -1,4 +1,3 @@
-# TODO: change rating to 10
 # TODO: display supplier status
 # TODO: Display task "for"
 # TODO: supplier stats (in work, queued, total)

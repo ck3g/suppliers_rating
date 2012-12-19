@@ -7,7 +7,7 @@ class Supplier < ActiveRecord::Base
   validates :name, presence: true
   validates :rating, presence: true, numericality: {
     greater_than_or_equal_to: 0,
-    less_than_or_equal_to: 5 }
+    less_than_or_equal_to: 10 }
 
   scope :term, ->(term) { where{ name.like_any term.split.map { |word| "%#{word}%" } } }
 

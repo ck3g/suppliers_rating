@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
 
   validates :supplier_service_id, :title, :status, presence: true
   validates :status, inclusion: { in: STATUSES }
-  validates :rating, allow_blank: true, inclusion: { in: 1..5 }
+  validates :rating, allow_blank: true, inclusion: { in: 1..10 }
 
   delegate :supplier_name_with_rating, to: :supplier_service, prefix: false
 
