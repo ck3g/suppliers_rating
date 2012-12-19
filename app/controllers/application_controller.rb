@@ -1,3 +1,10 @@
+# TODO: change rating to 10
+# TODO: display supplier status
+# TODO: Display task "for"
+# TODO: supplier stats (in work, queued, total)
+# TODO: service categories
+# TODO: display services by categories in tabs
+# TODO: supplier details (name, contact, payment(wmz), total paid, rating, current tasks, queue tasks, completed)
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
