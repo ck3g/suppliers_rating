@@ -4,12 +4,15 @@
 
   %table.table
     %thead
+      %tr.border-top
+        %th{rowspan: 2}= Supplier.human_attribute_name(:name)
+        %th{rowspan: 2}= Supplier.human_attribute_name(:rating)
+        %th{rowspan: 2}= Supplier.human_attribute_name(:services_count)
+        %th.centered{colspan: 2}= Supplier.human_attribute_name(:tasks)
+        %th{rowspan: 2}
       %tr
-        %th= Supplier.human_attribute_name(:name)
-        %th= Supplier.human_attribute_name(:rating)
-        %th= Supplier.human_attribute_name(:services_count)
-        %th= Supplier.human_attribute_name(:active_tasks_count)
-        %th
+        %th.borderless= Supplier.human_attribute_name(:active_tasks_count)
+        %th.borderless= Supplier.human_attribute_name(:tasks_count)
     %tbody
       - suppliers.each do |supplier|
         %tr
@@ -17,6 +20,7 @@
           %td= supplier.round_rating
           %td= link_to supplier.services_count, supplier_path(supplier)
           %td= link_to supplier.tasks.opened.count, tasks_supplier_path(supplier)
+          %td= link_to supplier.tasks.count, tasks_supplier_path(supplier)
           %td
             .btn-group.pull-right
               = link_to new_from_scratch_path(supplier_id: supplier.id), class: "btn btn-small btn-success", title: t(:new_task) do

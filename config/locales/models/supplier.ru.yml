@@ -6,4 +6,6 @@ ru:
         name: Имя или название
         rating: Рейтинг
         services_count: Услуг
-        active_tasks_count: Активных задач
+        active_tasks_count: В работе
+        tasks_count: Всего
+        tasks: Задач

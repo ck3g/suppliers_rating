@@ -1,7 +1,8 @@
 # TODO: display supplier status
 # TODO: Display task "for"
-# TODO: supplier stats (in work, queued, total)
 # TODO: supplier details (name, contact, payment(wmz), total paid, rating, current tasks, queue tasks, completed)
+#
+# TODO: что такое "в очереди"
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
