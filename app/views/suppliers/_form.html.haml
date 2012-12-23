@@ -1,4 +1,6 @@
 = simple_form_for supplier, html: { class: "form-horizontal" } do |form|
   = form.input :name, input_html: { class: "input-xlarge" }
+  = form.input :contacts
+  = form.input :pay_to
   .form-actions
     = form.button :submit, class: "btn btn-primary", :"data-disable-with" => t(:wait)

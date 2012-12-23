@@ -59,6 +59,30 @@ describe SuppliersController do
       end
     end
 
+    describe "GET #show" do
+      before { get :show, id: supplier_bob.id }
+      it { should assign_to(:supplier).with supplier_bob }
+      it { should respond_with :success }
+      it { should_not set_the_flash }
+      it { should render_template :show }
+    end
+
+    describe "GET #tasks" do
+      before { get :tasks, id: supplier_bob.id }
+      it { should assign_to(:supplier).with supplier_bob }
+      it { should respond_with :success }
+      it { should_not set_the_flash }
+      it { should render_template :tasks }
+    end
+
+    describe "GET #info" do
+      before { get :info, id: supplier_bob.id }
+      it { should assign_to(:supplier).with supplier_bob }
+      it { should respond_with :success }
+      it { should_not set_the_flash }
+      it { should render_template :info }
+    end
+
     describe "GET #edit" do
       before { get :edit, id: supplier_bob.id }
       it { should assign_to(:supplier).with supplier_bob }
@@ -133,6 +157,16 @@ describe SuppliersController do
           delete :destroy, id: supplier_smith.id
         }.to_not change(Supplier, :count).to(-1)
       end
+    end
+
+    describe "GET #tasks" do
+      before { get :tasks, id: supplier_bob.id }
+      it_behaves_like "has no rights"
+    end
+
+    describe "GET #info" do
+      before { get :info, id: supplier_bob.id }
+      it_behaves_like "has no rights"
     end
   end
 end

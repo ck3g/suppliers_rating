@@ -17,6 +17,7 @@ describe Supplier do
       it { should validate_presence_of :rating }
       it { should validate_numericality_of(:rating) }
       it { should allow_value(4.5).for :rating }
+      it { should validate_numericality_of(:total_amount) }
     end
 
     context "when invalid" do

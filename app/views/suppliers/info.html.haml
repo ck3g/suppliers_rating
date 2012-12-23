@@ -1,0 +1,31 @@
+%h1= title @supplier.name_with_rating
+
+%ul#supplier-services.nav.nav-tabs
+  %li= link_to t(:services), @supplier
+  %li= link_to t(:tasks), tasks_supplier_path(@supplier)
+  %li.active= link_to Supplier.human_attribute_name(:info), "#info"
+
+.tab-content
+  #info.tab-pane.active
+    %table.table
+      %tr
+        %th.small= Supplier.human_attribute_name(:name)
+        %td= @supplier.name
+      %tr
+        %th= Supplier.human_attribute_name(:contacts)
+        %td= @supplier.contacts
+      %tr
+        %th= Supplier.human_attribute_name(:pay_to)
+        %td= @supplier.pay_to
+      %tr
+        %th= Supplier.human_attribute_name(:total_amount)
+        %td= number_to_currency @supplier.total_amount
+      %tr
+        %th= Supplier.human_attribute_name(:rating)
+        %td= @supplier.rating
+      %tr
+        %th= Supplier.human_attribute_name(:active_tasks_count)
+        %td= @supplier.tasks.opened.count
+      %tr
+        %th= Supplier.human_attribute_name(:tasks_count)
+        %td= @supplier.tasks.count

@@ -3,6 +3,7 @@
 %ul#supplier-services.nav.nav-tabs
   %li.active= link_to t(:services), "#services"
   %li= link_to t(:tasks), tasks_supplier_path(@supplier)
+  %li= link_to Supplier.human_attribute_name(:info), info_supplier_path(@supplier)
 
 .tab-content
   #services.tab-pane.active

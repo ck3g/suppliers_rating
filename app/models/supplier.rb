@@ -1,5 +1,5 @@
 class Supplier < ActiveRecord::Base
-  attr_accessible :name, :rating
+  attr_accessible :name, :rating, :contacts, :pay_to, :total_amount
 
   has_many :supplier_services, dependent: :destroy
   has_many :tasks, through: :supplier_services
@@ -8,6 +8,7 @@ class Supplier < ActiveRecord::Base
   validates :rating, presence: true, numericality: {
     greater_than_or_equal_to: 0,
     less_than_or_equal_to: 10 }
+  validates :total_amount, numericality: true
 
   scope :term, ->(term) { where{ name.like_any term.split.map { |word| "%#{word}%" } } }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219201100) do
+ActiveRecord::Schema.define(:version => 20121223095901) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,9 +53,12 @@ ActiveRecord::Schema.define(:version => 20121219201100) do
 
   create_table "suppliers", :force => true do |t|
     t.string   "name"
-    t.decimal  "rating",     :default => 0.0
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.decimal  "rating",                                      :default => 0.0
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+    t.string   "contacts"
+    t.string   "pay_to"
+    t.decimal  "total_amount", :precision => 10, :scale => 2, :default => 0.0
   end
 
   add_index "suppliers", ["name"], :name => "index_suppliers_on_name"

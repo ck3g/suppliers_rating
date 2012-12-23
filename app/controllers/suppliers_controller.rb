@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   load_and_authorize_resource
-  before_filter :find_supplier, only: [:show, :update, :destroy, :tasks]
+  before_filter :find_supplier, only: [:show, :update, :destroy, :tasks, :info]
 
   autocomplete :supplier, :name, full: true
 
@@ -14,6 +14,9 @@ class SuppliersController < ApplicationController
   end
 
   def tasks
+  end
+
+  def info
   end
 
   def new
