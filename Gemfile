@@ -33,6 +33,7 @@ group :development do
   gem "erb2haml"
   gem "rails_best_practices"
   gem "pry-rails"
+  gem "meta_request", "0.2.0"
 end
 
 group :development, :test do
