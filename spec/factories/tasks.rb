@@ -17,5 +17,13 @@ FactoryGirl.define do
       status "closed"
       finished_at Time.current
     end
+
+    factory :paid_task do
+      paid true
+    end
+
+    factory :costless_task do
+      cost nil
+    end
   end
 end

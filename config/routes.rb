@@ -20,6 +20,7 @@ SuppliersRating::Application.routes.draw do
 
   resources :tasks, except: [:new] do
     post :reopen, on: :member
+    post :pay_to_supplier, on: :member
     post :create_from_scratch, on: :collection
     resources :comments, only: [:create, :destroy]
   end

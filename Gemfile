@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem "rake", "10.0.2"
+gem "rake", "~> 10.0.3"
 
 gem 'pg'
 gem "devise"

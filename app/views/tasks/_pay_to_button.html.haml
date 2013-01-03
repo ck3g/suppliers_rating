@@ -1,0 +1,2 @@
+- unless task.paid? || task.cost.blank?
+  = link_to t(:pay_to_supplier, amount: number_to_currency(task.cost)), pay_to_supplier_task_path(task), class: "btn with-margin", method: :post, remote: true

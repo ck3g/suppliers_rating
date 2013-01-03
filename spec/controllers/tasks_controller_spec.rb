@@ -171,6 +171,13 @@ describe TasksController do
         }.to change(closed_task2, :status).to("open")
       end
     end
+
+    describe "POST #pay_to_supplier" do
+      before { xhr :post, :pay_to_supplier, id: task }
+      it { should assign_to(:task).with task }
+      it { should assign_to(:comments) }
+      it { should assign_to(:comment).with_kind_of Comment }
+    end
   end
 
   describe "user is not signed in" do
@@ -227,6 +234,11 @@ describe TasksController do
           delete :destroy, id: task
         }.to_not change(Task, :count).to(-1)
       end
+    end
+
+    describe "POST #pay_to_supplier" do
+      before { xhr :post, :pay_to_supplier, id: task }
+      it_behaves_like "has no rights"
     end
   end
 end

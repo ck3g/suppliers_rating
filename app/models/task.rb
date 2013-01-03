@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  include ActionView::Helpers
+  include ApplicationHelper
   STATUSES = %w[open closed]
 
   attr_accessible :cost, :description, :finished_at, :rating, :status,
@@ -39,6 +41,15 @@ class Task < ActiveRecord::Base
     update_column :finished_at, nil
     update_column :rating, nil
     self.supplier.recalculate_rating!
+  end
+
+  def pay_to_supplier!
+    return if paid? || cost.blank?
+    Task.transaction do
+      update_column :paid, true
+      supplier.update_attributes total_amount: supplier.total_amount + cost
+      comments.create! message: t(:paid_to_supplier, amount: number_to_currency(cost)), status: "paid"
+    end
   end
 
   def self.init_from_supplier_and_service(supplier, service, params = {})

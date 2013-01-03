@@ -7,4 +7,7 @@
           %ul.nav.pull-right
             %li= link_to t(:delete), [comment.commentable, comment], method: :delete, data: { confirm: t(:are_you_sure) }, class: "red", remote: true
       %p
+        - if comment.status.present?
+          %span.status{class: "status-#{comment.status}"}
+            = t("comment.status.#{comment.status}")
         = simple_format comment.message

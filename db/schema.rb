@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223095901) do
+ActiveRecord::Schema.define(:version => 20130102085720) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(:version => 20121223095901) do
     t.string   "commentable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "status"
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["status"], :name => "index_comments_on_status"
 
   create_table "services", :force => true do |t|
     t.string   "name"
@@ -73,8 +75,10 @@ ActiveRecord::Schema.define(:version => 20121223095901) do
     t.datetime "finished_at"
     t.datetime "created_at",                                                             :null => false
     t.datetime "updated_at",                                                             :null => false
+    t.boolean  "paid",                                               :default => false
   end
 
+  add_index "tasks", ["paid"], :name => "index_tasks_on_paid"
   add_index "tasks", ["status"], :name => "index_tasks_on_status"
   add_index "tasks", ["supplier_service_id"], :name => "index_tasks_on_supplier_service_id"
 

@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   before_filter :find_supplier_service, only: [:new, :create]
   before_filter :find_task, only: [:show, :edit, :update, :destroy, :reopen]
-  before_filter :find_comments, only: [:show, :reopen]
+  before_filter :find_comments, only: [:show, :reopen, :pay_to_supplier]
 
   def index
     @tasks = Task.order("created_at DESC").page(params[:page])
@@ -82,6 +82,11 @@ class TasksController < ApplicationController
     render :reload
   end
 
+  def pay_to_supplier
+    @task.pay_to_supplier!
+    render :reload
+  end
+
   def destroy
     @task.destroy
     redirect_to callback_url
@@ -105,3 +110,4 @@ class TasksController < ApplicationController
     @comment = @task.comments.new
   end
 end
+

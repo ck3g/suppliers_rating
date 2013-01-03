@@ -89,4 +89,68 @@ describe Task do
       }.to change(closed_task2, :rating).to(nil)
     end
   end
+
+  describe "#pay_to_supplier!" do
+    context "when task is not paid" do
+      it "changes paid state" do
+        task = create :task
+        expect {
+          task.pay_to_supplier!
+          task.reload
+        }.to change(task, :paid).to(true)
+      end
+
+      it "increase supplier's total amount" do
+        task = create :task
+        supplier = task.supplier_service.supplier
+        expect {
+          task.pay_to_supplier!
+          supplier.reload
+        }.to change(supplier, :total_amount).by(task.cost)
+      end
+
+      it "creates new comment" do
+        task = create :task
+        expect {
+          task.pay_to_supplier!
+          task.reload
+        }.to change(task.comments, :count).by(1)
+      end
+
+    end
+
+    context "when cost is blank" do
+      let!(:task) { create :costless_task }
+      let(:supplier) { task.supplier_service.supplier }
+      it "not changes supplier total amount" do
+        expect {
+          task.pay_to_supplier!
+          supplier.reload
+        }.to_not change(supplier, :total_amount)
+      end
+
+      it "don't create new comment" do
+        expect {
+          task.pay_to_supplier!
+        }.to_not change(Comment, :count).by(1)
+      end
+    end
+
+    context "when task is paid" do
+      let!(:task) { create :paid_task }
+      let(:supplier) { task.supplier_service.supplier }
+      it "not changes supplier total amount" do
+        expect {
+          task.pay_to_supplier!
+          supplier.reload
+        }.to_not change(supplier, :total_amount)
+      end
+
+      it "don't create new comment" do
+        expect {
+          task.pay_to_supplier!
+        }.to_not change(Comment, :count).by(1)
+      end
+    end
+  end
 end

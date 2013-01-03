@@ -53,4 +53,9 @@ ru:
   create_category: Создать категорию
   new_category: Новая категория
   all: Все
+  pay_to_supplier: Выплатить %{amount}
+  comment:
+    status:
+      paid: Оплачено
+  paid_to_supplier: Выплачено %{amount}
 

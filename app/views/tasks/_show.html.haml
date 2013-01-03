@@ -21,13 +21,16 @@
             = check_box_tag :close
             = label_tag :close, t(:close), class: "checkbox-inline"
           .pull-right
+            = render 'pay_to_button', task: task
             %span#js-task-rating.hide
               = label_tag :task_rating, Task.human_attribute_name(:rating), class: "display-inline"
               = number_field_tag :task_rating, 10, in: 1..10, class: "task-rating"
             = f.button :submit, t(:do_comment), class: "btn btn-success", name: "do_comment", id: "js-do-comment", :"data-disable-with" => t(:wait)
             = f.button :submit, t(:comment_and_close), class: "btn btn-danger hide", name: "comment_and_close", id: "js-comment-and-close", :"data-disable-with" => t(:wait)
     - else
-      .pull-right
-        = link_to t(:reopen), reopen_task_path(task), class: "btn btn-danger", method: :post, remote: true
+      .controls-row
+        .pull-right
+          = render 'pay_to_button', task: task
+          = link_to t(:reopen), reopen_task_path(task), class: "btn btn-danger", method: :post, remote: true
       .clear
 

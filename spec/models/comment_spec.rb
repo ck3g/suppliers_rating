@@ -13,6 +13,8 @@ describe Comment do
     context "when valid" do
       subject { create :comment }
       it { should validate_presence_of :message }
+      it { should ensure_inclusion_of(:status).in_array(Comment::STATUSES) }
+      it { should allow_value("").for :status }
     end
   end
 end
