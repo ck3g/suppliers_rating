@@ -9,7 +9,7 @@
       - supplier.supplier_services.each do |supplier_service|
         %tr
           %td= link_to supplier_service.service_name, service_path(supplier_service.service)
-          %td= number_to_currency(supplier_service.price, unit: t(:lei))
+          %td= number_to_currency(supplier_service.price)
           %td
             .btn-group.pull-right
               = link_to new_supplier_service_task_path(supplier_service, callback_url: supplier_path(supplier)), class: "btn btn-small btn-success", title: t(:new_task) do

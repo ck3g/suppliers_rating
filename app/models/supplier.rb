@@ -26,5 +26,21 @@ class Supplier < ActiveRecord::Base
   def name_with_rating
     "#{name} [#{round_rating}]"
   end
+
+  def status
+    tasks.opened.count.zero? ? :free : :in_work
+  end
+
+  def free?
+    status == :free
+  end
+
+  def in_work?
+    status == :in_work
+  end
+
+  def in_behalf_of
+    tasks.opened.first.try :in_behalf_of
+  end
 end
 

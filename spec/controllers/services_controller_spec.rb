@@ -72,7 +72,7 @@ describe ServicesController do
           put :update, id: service_webdev, service: attributes_for(:service)
         end
         it { should assign_to(:service).with service_webdev }
-        it { should redirect_to services_path }
+        it { should redirect_to service_webdev }
         it { should set_the_flash[:notice].to I18n.t(:successfully_updated) }
         it "changes service's attributes" do
           expect {

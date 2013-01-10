@@ -4,6 +4,10 @@ module TasksHelper
   end
 
   def task_full_title(task)
-    [task.title, task.supplier_name_with_rating, task.service_name, number_to_currency(task.cost, unit: t(:lei))].compact.join(" | ")
+    [task.title, task.supplier_name_with_rating, task.service_name, number_to_currency(task.cost)].compact.join(" | ")
+  end
+
+  def task_paid_text(task)
+    I18n.t("task_paid.#{task.paid? ? "yes" : "no"}")
   end
 end

@@ -8,6 +8,7 @@
           %th= Task.human_attribute_name(:created_at)
           %th= Task.human_attribute_name(:finished_at)
           %th= Task.human_attribute_name(:rating)
+          %th= Task.human_attribute_name(:paid)
     %body
       - service.tasks.each do |task|
         %tr
@@ -25,6 +26,7 @@
             - else
               = t(:not_finished)
           %td= task.rating || "-"
+          %td= task_paid_text task
           %td
             .btn-group.pull-right
               = link_to edit_task_path(task, callback_url: service_path(service)), class: "btn btn-small", title: t(:edit) do

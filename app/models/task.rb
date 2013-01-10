@@ -5,7 +5,7 @@ class Task < ActiveRecord::Base
 
   attr_accessible :cost, :description, :finished_at, :rating, :status,
     :supplier_service_id, :title, :supplier_id, :service_id, :supplier_name,
-    :service_name
+    :service_name, :in_behalf_of
 
   attr_accessor :supplier_id, :service_id, :supplier_name, :service_name
 

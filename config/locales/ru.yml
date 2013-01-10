@@ -58,4 +58,9 @@ ru:
     status:
       paid: Оплачено
   paid_to_supplier: Выплачено %{amount}
+  free: Свободен
+  in_work: В работе
+  task_paid:
+    "yes": "Оплачено"
+    "no": "Нужно оплатить"
 

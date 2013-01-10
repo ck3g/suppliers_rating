@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
 
   def update
     if @service.update_attributes(params[:service])
-      redirect_to services_path, notice: t(:successfully_updated)
+      redirect_to @service, notice: t(:successfully_updated)
     else
       render :edit
     end

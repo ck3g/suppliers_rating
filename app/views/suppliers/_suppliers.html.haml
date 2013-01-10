@@ -5,8 +5,10 @@
   %table.table
     %thead
       %tr.border-top
-        %th{rowspan: 2}= Supplier.human_attribute_name(:name)
         %th{rowspan: 2}= Supplier.human_attribute_name(:rating)
+        %th{rowspan: 2}= Supplier.human_attribute_name(:status)
+        %th{rowspan: 2}= Supplier.human_attribute_name(:name)
+        %th{rowspan: 2}= Task.human_attribute_name(:in_behalf_of)
         %th{rowspan: 2}= Supplier.human_attribute_name(:services_count)
         %th.centered{colspan: 2}= Supplier.human_attribute_name(:tasks)
         %th{rowspan: 2}
@@ -15,9 +17,11 @@
         %th.borderless= Supplier.human_attribute_name(:tasks_count)
     %tbody
       - suppliers.each do |supplier|
-        %tr
-          %td= link_to supplier.name_with_rating, supplier_path(supplier)
+        %tr{class: supplier_status_class(supplier)}
           %td= supplier.round_rating
+          %td= t(supplier.status)
+          %td= link_to supplier.name_with_rating, supplier_path(supplier)
+          %td= supplier.in_behalf_of
           %td= link_to supplier.services_count, supplier_path(supplier)
           %td= link_to supplier.tasks.opened.count, tasks_supplier_path(supplier)
           %td= link_to supplier.tasks.count, tasks_supplier_path(supplier)

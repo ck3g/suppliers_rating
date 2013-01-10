@@ -11,6 +11,7 @@
           %th= Task.human_attribute_name(:created_at)
           %th= Task.human_attribute_name(:finished_at)
           %th= Task.human_attribute_name(:rating)
+          %th= Task.human_attribute_name(:paid)
     %body
       - @tasks.each do |task|
         %tr
@@ -20,7 +21,7 @@
             - else
               %span.badge.badge-important> &nbsp;
           %td= link_to task.title, task_path(task)
-          %td= task.supplier_name_with_rating
+          %td= link_to task.supplier_name_with_rating, task.supplier
           %td= task.service_name
           %td= l task.created_at, format: :long
           %td
@@ -29,6 +30,7 @@
             - else
               = t(:not_finished)
           %td= task.rating || "-"
+          %td= task_paid_text task
           %td
             .btn-group.pull-right
               = link_to edit_task_path(task), class: "btn btn-small", title: t(:edit) do

@@ -1,7 +1,6 @@
-# TODO: display supplier status
-# TODO: Display task "for"
 #
 # TODO: что такое "в очереди"
+# TODO: что такое "отказ"
 class ApplicationController < ActionController::Base
   protect_from_forgery
 

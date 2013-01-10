@@ -12,3 +12,5 @@ ru:
         created_at: Дата создания
         finished_at: Дата окончания
         rating: Оценка
+        in_behalf_of: Для
+        paid: Оплата

@@ -2,14 +2,20 @@
   = link_to t(:create_service_supplier), new_supplier_service_path(service_id: service.id, callback_url: service_path(service.id)), class: "btn btn-success"
   %table.table
     %thead
+      %th= Supplier.human_attribute_name(:rating)
       %th= SupplierService.human_attribute_name(:supplier_name)
+      %th= Task.human_attribute_name(:in_behalf_of)
+      %th= Supplier.human_attribute_name(:status)
       %th= SupplierService.human_attribute_name(:price)
       %th
     %tbody
       - service.supplier_services.each do |supplier_service|
-        %tr
+        %tr{class: supplier_status_class(supplier_service.supplier)}
+          %td= supplier_service.supplier_round_rating
           %td= link_to supplier_service.supplier_name_with_rating, supplier_path(supplier_service.supplier)
-          %td= number_to_currency(supplier_service.price, unit: t(:lei))
+          %td= supplier_service.supplier_in_behalf_of
+          %td= t(supplier_service.supplier_status)
+          %td= number_to_currency(supplier_service.price)
           %td
             .btn-group.pull-right
               = link_to new_supplier_service_task_path(supplier_service, callback_url: service_path(service)), class: "btn btn-small btn-success", title: t(:new_task) do

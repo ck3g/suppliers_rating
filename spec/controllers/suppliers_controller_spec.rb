@@ -97,7 +97,7 @@ describe SuppliersController do
           put :update, id: supplier_bob, supplier: attributes_for(:supplier)
         end
         it { should assign_to(:supplier).with supplier_bob }
-        it { should redirect_to suppliers_path }
+        it { should redirect_to supplier_bob }
         it { should set_the_flash[:notice].to I18n.t(:successfully_updated) }
         it "changes supplier_bob's attributes" do
           expect {

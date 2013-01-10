@@ -8,6 +8,7 @@ class SupplierService < ActiveRecord::Base
   validates :supplier_id, :supplier_name, :service_id, :service_name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  delegate :name, :name_with_rating, to: :supplier, prefix: true, allow_nil: true
+  delegate :name, :name_with_rating, :status, :round_rating, :in_behalf_of,
+    to: :supplier, prefix: true, allow_nil: true
   delegate :name, to: :service, prefix: true, allow_nil: true
 end
