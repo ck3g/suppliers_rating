@@ -4,6 +4,7 @@
   %li= link_to t(:services), @supplier
   %li= link_to t(:tasks), tasks_supplier_path(@supplier)
   %li.active= link_to Supplier.human_attribute_name(:info), "#info"
+  %li= link_to t(:edit), edit_supplier_path(@supplier)
 
 .tab-content
   #info.tab-pane.active

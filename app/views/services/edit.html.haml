@@ -1,3 +1,10 @@
 %h1= title @service.name
 
-= render 'form', service: @service
+%ul#service-suppliers.nav.nav-tabs
+  %li= link_to t(:suppliers), @service
+  %li= link_to t(:tasks), tasks_service_path(@service)
+  %li.active= link_to t(:edit), "#edit_service"
+
+.tab-content
+  #edit_service.tab-pane.active
+    = render 'form', service: @service

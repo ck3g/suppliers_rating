@@ -36,7 +36,7 @@ class SuppliersController < ApplicationController
 
   def update
     if @supplier.update_attributes params[:supplier]
-      redirect_to suppliers_path, notice: t(:successfully_updated)
+      redirect_to @supplier, notice: t(:successfully_updated)
     else
       render :edit
     end

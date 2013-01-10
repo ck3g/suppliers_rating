@@ -3,6 +3,7 @@
 %ul#service-suppliers.nav.nav-tabs
   %li= link_to t(:suppliers), service_path(@service)
   %li.active= link_to t(:tasks), "#tasks"
+  %li= link_to t(:edit), edit_service_path(@service)
 
 .tab-content
   #tasks.tab-pane.active

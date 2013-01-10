@@ -1,3 +1,11 @@
 %h1= title @supplier.name
 
-= render 'form', supplier: @supplier
+%ul#supplier-services.nav.nav-tabs
+  %li= link_to t(:services), supplier_path(@supplier)
+  %li= link_to t(:tasks), tasks_supplier_path(@supplier)
+  %li= link_to Supplier.human_attribute_name(:info), info_supplier_path(@supplier)
+  %li.active= link_to t(:edit), "#edit_supplier"
+
+.tab-content
+  #edit_supplier.tab-pane.active
+    = render 'form', supplier: @supplier
